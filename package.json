@@ -1,0 +1,121 @@
+{
+  "private": true,
+  "name": "agentic-cad-ide",
+  "productName": "AgenticCAD",
+  "version": "1.0.0",
+  "description": "The Official Editor for AgenticCAD - Specification Driven Engineering",
+  "main": "src-gen/backend/electron-main.js",
+  "keywords": [
+    "theia-application",
+    "agentic-cad",
+    "build123d"
+  ],
+  "resolutions": {
+    "electron": "29.4.0",
+    "minimatch": "9.0.5",
+    "inversify": "6.0.1",
+    "reflect-metadata": "0.1.13"
+  },
+  "overrides": {
+    "electron": "29.4.0"
+  },
+  "dependencies": {
+    "agentic-cad-ui": "file:./local-extensions/agentic-cad-ui",
+    "@theia/electron": "1.64.4",
+    "@theia/core": "1.64.4",
+    "@theia/editor": "1.64.4",
+    "@theia/filesystem": "1.64.4",
+    "@theia/file-search": "1.64.4",
+    "@theia/git": "1.60.2",
+    "@theia/messages": "1.64.4",
+    "@theia/mini-browser": "1.64.4",
+    "@theia/monaco": "1.64.4",
+    "@theia/navigator": "1.64.4",
+    "@theia/plugin-ext": "1.64.4",
+    "@theia/plugin-ext-vscode": "1.64.4",
+    "@theia/preferences": "1.64.4",
+    "@theia/process": "1.64.4",
+    "@theia/scm": "1.64.4",
+    "@theia/terminal": "1.64.4",
+    "@theia/vsx-registry": "1.64.4",
+    "@theia/workspace": "1.64.4"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.64.4",
+    "cross-env": "^7.0.3",
+    "electron": "37.2.1",
+    "electron-builder": "latest",
+    "rimraf": "latest"
+  },
+  "scripts": {
+    "clean": "rimraf lib src-gen dist local-extensions/agentic-cad-ui/node_modules local-extensions/agentic-cad-ui/lib",
+    "reinstall": "rimraf yarn.lock node_modules && yarn install && yarn rebuild",
+    "build": "theia build --mode production",
+    "watch": "theia build --watch --mode development",
+    "rebuild": "electron-builder install-app-deps",
+    "start": "cross-env ELECTRON_ENABLE_LOGGING=true electron src-gen/backend/electron-main.js --plugins=local-dir:plugins --hostname=127.0.0.1 --no-sandbox",
+    "package": "electron-builder",
+    "package:win": "electron-builder --win",
+    "package:mac": "electron-builder --mac",
+    "package:linux": "electron-builder --linux",
+    "update:theia": "yarn upgrade --pattern @theia"
+  },
+  "theia": {
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "AgenticCAD",
+        "defaultTheme": "dark",
+        "defaultIconTheme": "vs-seti",
+        "preferences": {
+          "files.enableTrash": false,
+          "files.autoSave": "afterDelay",
+          "editor.minimap.enabled": false,
+          "workbench.iconTheme": "vs-seti",
+          "python.languageServer": "Jedi",
+          "python.analysis.downloadChannel": "beta"
+        },
+        "electron": {
+          "windowOptions": {
+            "webPreferences": {
+              "nodeIntegration": true,
+              "contextIsolation": true,
+              "sandbox": false
+            }
+          }
+        }
+      }
+    },
+    "backend": {
+      "config": {
+        "allowRoot": true
+      }
+    }
+  },
+  "build": {
+    "appId": "com.agenticcad.ide",
+    "productName": "AgenticCAD",
+    "copyright": "Copyright © 2025 AgenticCAD Team",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Development"
+    },
+    "files": [
+      "package.json",
+      "src-gen/**/*",
+      "plugins/**/*",
+      "resources/**/*"
+    ]
+  }
+}

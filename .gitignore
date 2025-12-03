@@ -9,3 +9,9 @@ build/
 dist/
 .pytest_cache/
 .mypy_cache/
+
+node_modules/
+local-extensions/**/node_modules/
+lib/
+
+.theia/plugins

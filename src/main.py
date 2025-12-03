@@ -1,6 +1,0 @@
-def main():
-    print("AgentCAD project initialized.")
-
-
-if __name__ == "__main__":
-    main()

@@ -1,0 +1,26 @@
+{
+  "name": "agentic-cad-ui",
+  "version": "1.0.0",
+  "description": "AgenticCAD Specific Layouts & Commands",
+  "keywords": [
+    "theia-extension"
+  ],
+  "dependencies": {
+    "@theia/core": "1.64.4",
+    "@theia/mini-browser": "1.64.4",
+    "fs-extra": "^11.1.1",
+    "inversify": "^6.0.1"
+  },
+  "theiaExtension": {
+    "frontend": {
+      "gen/browser/agentic-cad-frontend-module": "src/browser/agentic-cad-frontend-module"
+    },
+    "backend": {
+      "gen/node/agentic-cad-backend-module": "src/node/agentic-cad-backend-module"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  }
+}

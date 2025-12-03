@@ -1,0 +1,101 @@
+name: Build & Release AgenticCAD
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*' # Trigger release on tags like v1.0.0
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (v18.x)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      # Linux-specific dependencies required by Theia/Electron
+      - name: Install Linux Dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev rpm
+
+      # ----------------------------------------------------------------
+      # STEP 1: INSTALL
+      # ----------------------------------------------------------------
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      # ----------------------------------------------------------------
+      # STEP 2: REBUILD NATIVE MODULES (CRITICAL UPDATE)
+      # This ensures node-pty is compiled for Electron 28, not Node.js
+      # ----------------------------------------------------------------
+      - name: Rebuild Native Modules
+        run: yarn rebuild
+
+      # ----------------------------------------------------------------
+      # STEP 3: PRODUCTION BUILD (Transpile JS)
+      # ----------------------------------------------------------------
+      - name: Build Source
+        run: yarn build
+
+      # ----------------------------------------------------------------
+      # STEP 4: PACKAGE BINARY
+      # ----------------------------------------------------------------
+      - name: Package Application
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          yarn package
+        # electron-builder automatically detects the OS and builds 
+        # the correct target defined in package.json
+
+      # ----------------------------------------------------------------
+      # STEP 5: UPLOAD ARTIFACTS (Internal storage)
+      # ----------------------------------------------------------------
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentic-cad-${{ matrix.os }}
+          path: |
+            dist/*.exe
+            dist/*.AppImage
+            dist/*.dmg
+            dist/*.snap
+            dist/*.deb
+          if-no-files-found: warn
+
+  # ----------------------------------------------------------------
+  # RELEASE JOB (Only runs on tags v*)
+  # ----------------------------------------------------------------
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            agentic-cad-windows-latest/*.exe
+            agentic-cad-ubuntu-latest/*.AppImage
+            agentic-cad-macos-latest/*.dmg
+          generate_release_notes: true
