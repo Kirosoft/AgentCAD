@@ -42,7 +42,7 @@ export class AgenticCadFrontendContribution implements FrontendApplicationContri
     }
 
     async onStart(app: FrontendApplication): Promise<void> {
-        console.info('[AgentCAD BUILD MARKER 4] agentic-cad-frontend-contribution.js loaded');
+        console.info('[AgentCAD BUILD MARKER 5] agentic-cad-frontend-contribution.js loaded');
         // Optional: Trigger layout automatically if a specific file exists
     }
 

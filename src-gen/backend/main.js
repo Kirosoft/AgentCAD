@@ -39,19 +39,7 @@ globalThis.extensionInfo = [
         "version": "1.0.0"
     },
     {
-        "name": "@theia/process",
-        "version": "1.64.4"
-    },
-    {
         "name": "@theia/workspace",
-        "version": "1.64.4"
-    },
-    {
-        "name": "@theia/file-search",
-        "version": "1.64.4"
-    },
-    {
-        "name": "@theia/messages",
         "version": "1.64.4"
     },
     {
@@ -67,15 +55,31 @@ globalThis.extensionInfo = [
         "version": "1.64.4"
     },
     {
-        "name": "@theia/navigator",
-        "version": "1.64.4"
-    },
-    {
         "name": "@theia/output",
         "version": "1.64.4"
     },
     {
         "name": "@theia/ai-core",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/process",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/file-search",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/ai-chat",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/messages",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/navigator",
         "version": "1.64.4"
     },
     {

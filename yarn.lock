@@ -1129,9 +1129,9 @@
     tmp-promise "^3.0.2"
 
 "@modelcontextprotocol/sdk@^1.15.1":
-  version "1.24.2"
-  resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.24.2.tgz#30e97279ef5cbce4b4e9d7e68e4db802d1f5733f"
-  integrity sha512-hS/kzSfchqzvUeJUsdiDHi84/kNhLIZaZ6coGQVwbYIelOBbcAwUohUfaQTLa1MvFOK/jbTnGFzraHSFwB7pjQ==
+  version "1.24.3"
+  resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.24.3.tgz#81a3fcc919cb4ce8630e2bcecf59759176eb331a"
+  integrity sha512-YgSHW29fuzKKAHTGe9zjNoo+yF8KaQPzDC2W9Pv41E7/57IfY+AMGJ/aDFlgTLcVVELoggKE4syABCE75u3NCw==
   dependencies:
     ajv "^8.17.1"
     ajv-formats "^3.0.1"
@@ -1356,6 +1356,23 @@
   integrity sha512-4BAffykYOgO+5nzBWYwE3W90sBgLJoUPRWWcL8wlyiM8IB8ipJz3UMJ9KXQd1RKQXpKp8Tutn80HZtWsu2u76w==
   dependencies:
     defer-to-connect "^2.0.0"
+
+"@theia/ai-chat@1.64.4":
+  version "1.64.4"
+  resolved "https://registry.yarnpkg.com/@theia/ai-chat/-/ai-chat-1.64.4.tgz#c87b796eceb599fd3d426fc81163460df3b9c4e9"
+  integrity sha512-+Q9VoTvx0Yfy14fQCgSDKbYHkJUCNC+eiAZhpImQB0KSPV48PfTWcb/SlG0vuJXNYRy3nQ25cjjg3HRJ9TKreA==
+  dependencies:
+    "@theia/ai-core" "1.64.4"
+    "@theia/core" "1.64.4"
+    "@theia/editor" "1.64.4"
+    "@theia/file-search" "1.64.4"
+    "@theia/filesystem" "1.64.4"
+    "@theia/monaco" "1.64.4"
+    "@theia/monaco-editor-core" "1.96.302"
+    "@theia/workspace" "1.64.4"
+    js-yaml "^4.1.0"
+    minimatch "^5.1.0"
+    tslib "^2.6.2"
 
 "@theia/ai-core@1.64.4":
   version "1.64.4"
@@ -2772,9 +2789,6 @@ agent-base@^7.1.0, agent-base@^7.1.2:
 "agentic-cad-ui@file:./local-extensions/agentic-cad-ui":
   version "1.0.0"
   dependencies:
-    "@theia/core" "1.64.4"
-    "@theia/editor" "1.64.4"
-    "@theia/mini-browser" "1.64.4"
     fs-extra "^11.1.1"
 
 agentkeepalive@^4.2.1:
@@ -3145,9 +3159,9 @@ base64id@2.0.0, base64id@~2.0.0:
   integrity sha512-lGe34o6EHj9y3Kts9R4ZYs/Gr+6N7MCaMlIFA3F1R2O5/m7K06AxfSeO5530PEERE6/WyEg3lsuyw4GHlPZHog==
 
 baseline-browser-mapping@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.0.tgz#b4b91c7ec4deac14527bc5495b914fb9db1a251a"
-  integrity sha512-Mh++g+2LPfzZToywfE1BUzvZbfOY52Nil0rn9H1CPC5DJ7fX+Vir7nToBeoiSbB1zTNeGYbELEvJESujgGrzXw==
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.2.tgz#0ae89ec3e10e07c368b77def89db8044409461d1"
+  integrity sha512-PxSsosKQjI38iXkmb3d0Y32efqyA0uW4s41u4IVBsLlWLhCiYNpH/AfNOVWRqCQBlD8TFJTz6OUWNd4DFJCnmw==
 
 basic-auth@^2.0.1:
   version "2.0.1"
@@ -8544,9 +8558,9 @@ unzipper@^0.9.11:
     setimmediate "~1.0.4"
 
 update-browserslist-db@^1.2.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.2.1.tgz#9270a09eb224c4c77468622e4bfeaefb553b944a"
-  integrity sha512-R9NcHbbZ45RoWfTdhn1J9SS7zxNvlddv4YRrHTUaFdtjbmfncfedB45EC9IaqJQ97iAR1GZgOfyRQO+ExIF6EQ==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.2.2.tgz#cfb4358afa08b3d5731a2ecd95eebf4ddef8033e"
+  integrity sha512-E85pfNzMQ9jpKkA7+TJAi4TJN+tBCuWh5rUcS/sv6cFi+1q9LYDwDI5dpUL0u/73EElyQ8d3TEaeW4sPedBqYA==
   dependencies:
     escalade "^3.2.0"
     picocolors "^1.1.1"

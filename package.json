@@ -23,6 +23,8 @@
     "inversify": "6.0.1",
     "reflect-metadata": "0.1.13",
     "agentic-cad-ui": "file:./local-extensions/agentic-cad-ui",
+    "@theia/ai-chat": "1.64.4",
+    "@theia/ai-core": "1.64.4",
     "@theia/electron": "1.64.4",
     "@theia/core": "1.64.4",
     "@theia/editor": "1.64.4",

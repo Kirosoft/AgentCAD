@@ -7,10 +7,17 @@
     "theia-extension"
   ],
   "dependencies": {
+    "fs-extra": "^11.1.1"
+  },
+  "peerDependencies": {
     "@theia/core": "1.64.4",
     "@theia/mini-browser": "1.64.4",
-    "@theia/editor": "1.64.4",
-    "fs-extra": "^11.1.1"
+    "@theia/editor": "1.64.4"
+  },
+  "devDependencies": {
+    "@theia/core": "1.64.4",
+    "@theia/mini-browser": "1.64.4",
+    "@theia/editor": "1.64.4"
   },
   "theiaExtensions": [
     {
@@ -19,7 +26,7 @@
     }
   ],
   "scripts": {
-    "build": "tsc && cp -r lib ../../../node_modules/agentic-cad-ui/",
+    "build": "npx tsc && copy -r lib ../../../node_modules/agentic-cad-ui/",
     "watch": "tsc -w"
   }
 }
