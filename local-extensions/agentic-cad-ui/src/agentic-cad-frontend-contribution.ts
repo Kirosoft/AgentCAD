@@ -1,26 +1,43 @@
 import { injectable, inject } from '@theia/core/shared/inversify';
-import { CommandContribution, CommandRegistry, MessageService } from '@theia/core';
-import { FrontendApplicationContribution, FrontendApplication } from '@theia/core/lib/browser';
+import { CommandContribution, CommandRegistry, MessageService, MenuContribution, MenuModelRegistry } from '@theia/core';
+import { FrontendApplicationContribution, FrontendApplication, KeybindingContribution, KeybindingRegistry, CommonMenus } from '@theia/core/lib/browser';
 import { EditorManager } from '@theia/editor/lib/browser';
 import { MiniBrowserOpenHandler } from '@theia/mini-browser/lib/browser/mini-browser-open-handler';
 import URI from '@theia/core/lib/common/uri';
 
 export const OpenAgenticLayoutCommand = {
     id: 'agentic-cad.openLayout',
-    label: 'AgenticCAD: Open Part Workspace'
+    label: 'AgentCAD: Open 3D Viewer'
 };
 
 @injectable()
-export class AgenticCadFrontendContribution implements FrontendApplicationContribution, CommandContribution {
+export class AgenticCadFrontendContribution implements FrontendApplicationContribution, CommandContribution, MenuContribution, KeybindingContribution {
 
     @inject(EditorManager) protected readonly editorManager: EditorManager;
     @inject(MiniBrowserOpenHandler) protected readonly miniBrowserHandler: MiniBrowserOpenHandler;
     @inject(MessageService) protected readonly messageService: MessageService;
 
-    // Register the command (Ctrl+Shift+P -> "AgenticCAD: Open Part Workspace")
+    // Register the command (Ctrl+Shift+P -> "AgenticCAD: Open 3D Viewer")
     registerCommands(registry: CommandRegistry): void {
         registry.registerCommand(OpenAgenticLayoutCommand, {
             execute: () => this.openLayout()
+        });
+    }
+
+    // Add keyboard shortcut: Ctrl+Shift+V
+    registerKeybindings(registry: KeybindingRegistry): void {
+        registry.registerKeybinding({
+            command: OpenAgenticLayoutCommand.id,
+            keybinding: 'ctrlcmd+shift+v'
+        });
+    }
+
+    // Add menu item under View menu
+    registerMenus(registry: MenuModelRegistry): void {
+        registry.registerMenuAction(CommonMenus.VIEW_VIEWS, {
+            commandId: OpenAgenticLayoutCommand.id,
+            label: 'Open 3D Viewer',
+            order: '0'
         });
     }
 

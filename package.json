@@ -45,8 +45,8 @@
     "@theia/cli": "1.64.4",
     "cross-env": "^7.0.3",
     "electron": "37.2.1",
-    "electron-builder": "latest",
-    "rimraf": "latest"
+    "electron-builder": "^26.0.0",
+    "rimraf": "^5.0.10"
   },
   "scripts": {
     "clean": "rimraf lib src-gen dist local-extensions/agentic-cad-ui/node_modules local-extensions/agentic-cad-ui/lib",
@@ -69,6 +69,7 @@
         "defaultTheme": "dark",
         "defaultIconTheme": "vs-seti",
         "preferences": {
+          "security.workspace.trust.enabled": false,
           "files.enableTrash": false,
           "files.autoSave": "afterDelay",
           "editor.minimap.enabled": false,

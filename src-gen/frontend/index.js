@@ -24,6 +24,7 @@ FrontendApplicationConfigProvider.set({
     "reloadOnReconnect": false,
     "uriScheme": "theia",
     "preferences": {
+        "security.workspace.trust.enabled": false,
         "files.enableTrash": false,
         "files.autoSave": "afterDelay",
         "editor.minimap.enabled": false,

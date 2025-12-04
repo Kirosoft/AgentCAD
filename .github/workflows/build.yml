@@ -27,11 +27,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 1. SETUP NODE (Pin to 18 to match Theia 1.64 requirements)
+      # 1. SETUP NODE (Using Node 20 LTS for rimraf and modern tooling)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
 
       # 2. SETUP PYTHON (Crucial: Forces 3.11 to avoid the distutils/gyp error)
