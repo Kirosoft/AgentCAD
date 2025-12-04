@@ -2,11 +2,11 @@ name: Build AgenticCAD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     tags:
       - 'v*' # Triggers a Release when you push a tag like v1.0.0
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch: # Allows you to click "Run" manually in GitHub
 
 # Permissions required to upload the .exe/.dmg files to the Release page
