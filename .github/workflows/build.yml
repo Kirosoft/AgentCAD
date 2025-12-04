@@ -1,14 +1,15 @@
-name: Build & Release AgenticCAD
+name: Build AgenticCAD
 
 on:
   push:
     branches: [ main ]
     tags:
-      - 'v*' # Trigger release on tags like v1.0.0
+      - 'v*' # Triggers a Release when you push a tag like v1.0.0
   pull_request:
     branches: [ main ]
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch: # Allows you to click "Run" manually in GitHub
 
+# Permissions required to upload the .exe/.dmg files to the Release page
 permissions:
   contents: write
 
@@ -19,58 +20,55 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Builds for all three OSs in parallel
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (v18.x)
+      # 1. SETUP NODE (Pin to 18 to match Theia 1.64 requirements)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'yarn'
 
-      # Linux-specific dependencies required by Theia/Electron
-      - name: Install Linux Dependencies
+      # 2. SETUP PYTHON (Crucial: Forces 3.11 to avoid the distutils/gyp error)
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+
+      # 3. INSTALL LINUX DEPENDENCIES (Required for Keytar/Electron)
+      - name: Install Linux Deps
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev rpm
 
-      # ----------------------------------------------------------------
-      # STEP 1: INSTALL
-      # ----------------------------------------------------------------
+      # 4. INSTALL DEPENDENCIES
+      # We use --frozen-lockfile to ensure CI matches your local yarn.lock exactly
+      # If this fails, it means you forgot to commit your yarn.lock!
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      # ----------------------------------------------------------------
-      # STEP 2: REBUILD NATIVE MODULES (CRITICAL UPDATE)
-      # This ensures node-pty is compiled for Electron 28, not Node.js
-      # ----------------------------------------------------------------
-      - name: Rebuild Native Modules
+      # 5. REBUILD NATIVE MODULES (The most important step)
+      # This compiles node-pty and keytar for Electron 29
+      - name: Rebuild for Electron
         run: yarn rebuild
 
-      # ----------------------------------------------------------------
-      # STEP 3: PRODUCTION BUILD (Transpile JS)
-      # ----------------------------------------------------------------
-      - name: Build Source
+      # 6. BUILD SOURCE (Generates src-gen)
+      - name: Build Frontend
         run: yarn build
 
-      # ----------------------------------------------------------------
-      # STEP 4: PACKAGE BINARY
-      # ----------------------------------------------------------------
+      # 7. PACKAGE APPLICATION (Generates .exe / .dmg / .AppImage)
       - name: Package Application
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          yarn package
-        # electron-builder automatically detects the OS and builds 
-        # the correct target defined in package.json
+        run: yarn package
 
-      # ----------------------------------------------------------------
-      # STEP 5: UPLOAD ARTIFACTS (Internal storage)
-      # ----------------------------------------------------------------
+      # 8. UPLOAD ARTIFACTS (For testing without releasing)
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -84,7 +82,7 @@ jobs:
           if-no-files-found: warn
 
   # ----------------------------------------------------------------
-  # RELEASE JOB (Only runs on tags v*)
+  # RELEASE JOB (Only runs when you push a tag starting with 'v')
   # ----------------------------------------------------------------
   release:
     needs: build
@@ -94,6 +92,7 @@ jobs:
       - name: Download All Artifacts
         uses: actions/download-artifact@v4
       
+      # This effectively "Publishes" your app to your GitHub Releases page
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
