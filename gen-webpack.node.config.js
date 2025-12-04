@@ -25,7 +25,7 @@ for (const [entryPointName, entryPointPath] of Object.entries({
     'parcel-watcher': '@theia/filesystem/lib/node/parcel-watcher',
     'plugin-vscode-init': '@theia/plugin-ext-vscode/lib/node/plugin-vscode-init',
     
-    'git-locator-host': '@theia/git/lib/node/git-locator/git-locator-host',
+    
 })) {
     commonJsLibraries[entryPointName] = {
         import: require.resolve(entryPointPath),

@@ -20,13 +20,14 @@
     "electron": "29.4.0"
   },
   "dependencies": {
+    "inversify": "6.0.1",
+    "reflect-metadata": "0.1.13",
     "agentic-cad-ui": "file:./local-extensions/agentic-cad-ui",
     "@theia/electron": "1.64.4",
     "@theia/core": "1.64.4",
     "@theia/editor": "1.64.4",
     "@theia/filesystem": "1.64.4",
     "@theia/file-search": "1.64.4",
-    "@theia/git": "1.60.2",
     "@theia/messages": "1.64.4",
     "@theia/mini-browser": "1.64.4",
     "@theia/monaco": "1.64.4",

@@ -66,8 +66,6 @@ module.exports = async (port, host, argv) => {
         await load(require('@theia/process/lib/node/process-backend-module'));
         await load(require('@theia/workspace/lib/node/workspace-backend-module'));
         await load(require('@theia/file-search/lib/node/file-search-backend-module'));
-        await load(require('@theia/git/lib/node/git-backend-module'));
-        await load(require('@theia/git/lib/electron-node/env/electron-git-env-module'));
         await load(require('@theia/mini-browser/lib/node/mini-browser-backend-module'));
         await load(require('@theia/ai-core/lib/node/ai-core-backend-module'));
         await load(require('@theia/ai-mcp/lib/node/mcp-backend-module'));

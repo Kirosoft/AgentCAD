@@ -1,4 +1,4 @@
-import { ContainerModule } from 'inversify';
+import { ContainerModule } from '@theia/core/shared/inversify';
 import { FrontendApplicationContribution } from '@theia/core/lib/browser';
 import { CommandContribution } from '@theia/core/lib/common';
 import { AgenticCadFrontendContribution } from '../agentic-cad-frontend-contribution';

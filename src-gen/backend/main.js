@@ -43,39 +43,27 @@ globalThis.extensionInfo = [
         "version": "1.64.4"
     },
     {
-        "name": "@theia/navigator",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/markers",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/outline-view",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/monaco",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/scm",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/scm-extra",
-        "version": "1.60.2"
-    },
-    {
-        "name": "@theia/git",
-        "version": "1.60.2"
-    },
-    {
         "name": "@theia/messages",
         "version": "1.64.4"
     },
     {
         "name": "@theia/mini-browser",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/markers",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/outline-view",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/monaco",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/navigator",
         "version": "1.64.4"
     },
     {
@@ -132,6 +120,10 @@ globalThis.extensionInfo = [
     },
     {
         "name": "@theia/preferences",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/scm",
         "version": "1.64.4"
     },
     {

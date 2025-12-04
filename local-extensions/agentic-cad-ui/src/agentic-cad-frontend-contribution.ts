@@ -1,4 +1,4 @@
-import { injectable, inject } from 'inversify';
+import { injectable, inject } from '@theia/core/shared/inversify';
 import { CommandContribution, CommandRegistry, MessageService } from '@theia/core';
 import { FrontendApplicationContribution, FrontendApplication } from '@theia/core/lib/browser';
 import { EditorManager } from '@theia/editor/lib/browser';
