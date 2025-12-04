@@ -1,6 +1,7 @@
 {
   "name": "agentic-cad-ui",
   "version": "1.0.0",
+  "main": "lib/browser/agentic-cad-frontend-module.js",
   "description": "AgenticCAD Specific Layouts & Commands",
   "keywords": [
     "theia-extension"
@@ -8,18 +9,17 @@
   "dependencies": {
     "@theia/core": "1.64.4",
     "@theia/mini-browser": "1.64.4",
+    "@theia/editor": "1.64.4",
     "fs-extra": "^11.1.1"
   },
-  "theiaExtension": {
-    "frontend": {
-      "gen/browser/agentic-cad-frontend-module": "src/browser/agentic-cad-frontend-module"
-    },
-    "backend": {
-      "gen/node/agentic-cad-backend-module": "src/node/agentic-cad-backend-module"
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/agentic-cad-frontend-module",
+      "backend": "lib/node/agentic-cad-backend-module"
     }
-  },
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r lib ../../../node_modules/agentic-cad-ui/",
     "watch": "tsc -w"
   }
 }

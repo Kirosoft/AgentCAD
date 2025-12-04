@@ -62,11 +62,12 @@ module.exports = async (port, host, argv) => {
         await load(require('@theia/core/lib/electron-node/request/electron-backend-request-module'));
         await load(require('@theia/filesystem/lib/node/filesystem-backend-module'));
         await load(require('@theia/filesystem/lib/node/download/file-download-backend-module'));
+        await load(require('@theia/mini-browser/lib/node/mini-browser-backend-module'));
+        await load(require('agentic-cad-ui/lib/node/agentic-cad-backend-module'));
         await load(require('@theia/process/lib/common/process-common-module'));
         await load(require('@theia/process/lib/node/process-backend-module'));
         await load(require('@theia/workspace/lib/node/workspace-backend-module'));
         await load(require('@theia/file-search/lib/node/file-search-backend-module'));
-        await load(require('@theia/mini-browser/lib/node/mini-browser-backend-module'));
         await load(require('@theia/ai-core/lib/node/ai-core-backend-module'));
         await load(require('@theia/ai-mcp/lib/node/mcp-backend-module'));
         await load(require('@theia/terminal/lib/node/terminal-backend-module'));

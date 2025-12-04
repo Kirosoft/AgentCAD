@@ -2773,6 +2773,7 @@ agent-base@^7.1.0, agent-base@^7.1.2:
   version "1.0.0"
   dependencies:
     "@theia/core" "1.64.4"
+    "@theia/editor" "1.64.4"
     "@theia/mini-browser" "1.64.4"
     fs-extra "^11.1.1"
 

@@ -7,7 +7,7 @@ import URI from '@theia/core/lib/common/uri';
 
 export const OpenAgenticLayoutCommand = {
     id: 'agentic-cad.openLayout',
-    label: 'AgentCAD: Open 3D Viewer'
+    label: 'AgentCAD: Viewer'
 };
 
 @injectable()
@@ -36,12 +36,13 @@ export class AgenticCadFrontendContribution implements FrontendApplicationContri
     registerMenus(registry: MenuModelRegistry): void {
         registry.registerMenuAction(CommonMenus.VIEW_VIEWS, {
             commandId: OpenAgenticLayoutCommand.id,
-            label: 'Open 3D Viewer',
+            label: 'AgentCAD Viewer',
             order: '0'
         });
     }
 
     async onStart(app: FrontendApplication): Promise<void> {
+        console.info('[AgentCAD BUILD MARKER 4] agentic-cad-frontend-contribution.js loaded');
         // Optional: Trigger layout automatically if a specific file exists
     }
 
@@ -55,10 +56,12 @@ export class AgenticCadFrontendContribution implements FrontendApplicationContri
             // const uri = new URI('file:///path/to/project/src/parts/chassis');
             
             // For now, we just open the 3D Viewer on the side
-            this.messageService.info('Opening OCP Viewer...');
+            this.messageService.info('Opening AgentCAD Viewer...');
             
             // Open Mini-Browser with the OCP Server
-            await this.miniBrowserHandler.open(new URI(ocpUrl), {
+            // Build a safe URI via components to avoid parsing issues
+            const safeUri = URI.fromComponents({ scheme: 'http', authority: '127.0.0.1:32323', path: '/', query: '', fragment: '' });
+            await this.miniBrowserHandler.open(safeUri, {
                 widgetOptions: {
                     area: 'right',  // Force to Right Panel
                     mode: 'split-right'
@@ -67,7 +70,7 @@ export class AgenticCadFrontendContribution implements FrontendApplicationContri
 
         } catch (err) {
             console.error(err);
-            this.messageService.error('Failed to open AgenticCAD Layout. Is OCP Server running?');
+            this.messageService.error('Failed to open AgentCAD Layout. Is OCP Server running?');
         }
     }
 }

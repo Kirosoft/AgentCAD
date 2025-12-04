@@ -376,6 +376,15 @@
     ws "^8.17.1"
     yargs "^15.3.1"
 
+"@theia/editor@1.64.4":
+  version "1.64.4"
+  resolved "https://registry.yarnpkg.com/@theia/editor/-/editor-1.64.4.tgz#62d3dbffe322888e0df0df4f187d64834b359770"
+  integrity sha512-xVjmm0D5E/6I4xxASQabLVf896lxYD3e9uYxyD7I91NdFFNpinoxnv/ODHB0FVLgFbkw4VJzeS4g0VcPd8Yf6w==
+  dependencies:
+    "@theia/core" "1.64.4"
+    "@theia/variable-resolver" "1.64.4"
+    tslib "^2.6.2"
+
 "@theia/filesystem@1.64.4":
   version "1.64.4"
   resolved "https://registry.yarnpkg.com/@theia/filesystem/-/filesystem-1.64.4.tgz#e755b7622e6d3099a0dc24177353cd36e129f4cf"
@@ -417,6 +426,14 @@
   dependencies:
     http-proxy-agent "^5.0.0"
     https-proxy-agent "^5.0.0"
+    tslib "^2.6.2"
+
+"@theia/variable-resolver@1.64.4":
+  version "1.64.4"
+  resolved "https://registry.yarnpkg.com/@theia/variable-resolver/-/variable-resolver-1.64.4.tgz#e3a7a53ddf5fa74bd145375a481426c5b184d859"
+  integrity sha512-wA/eA3baX+1JUb1kcotarllSEW/wO8kuyq1U4kGatsMqkhWwDjc8FJghH/VWx0/gQeApNhtdv9+uSsxTr7i1/Q==
+  dependencies:
+    "@theia/core" "1.64.4"
     tslib "^2.6.2"
 
 "@tootallnate/once@2":

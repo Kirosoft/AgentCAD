@@ -19,6 +19,14 @@ globalThis.extensionInfo = [
         "version": "1.64.4"
     },
     {
+        "name": "@theia/filesystem",
+        "version": "1.64.4"
+    },
+    {
+        "name": "@theia/mini-browser",
+        "version": "1.64.4"
+    },
+    {
         "name": "@theia/variable-resolver",
         "version": "1.64.4"
     },
@@ -27,8 +35,8 @@ globalThis.extensionInfo = [
         "version": "1.64.4"
     },
     {
-        "name": "@theia/filesystem",
-        "version": "1.64.4"
+        "name": "agentic-cad-ui",
+        "version": "1.0.0"
     },
     {
         "name": "@theia/process",
@@ -44,10 +52,6 @@ globalThis.extensionInfo = [
     },
     {
         "name": "@theia/messages",
-        "version": "1.64.4"
-    },
-    {
-        "name": "@theia/mini-browser",
         "version": "1.64.4"
     },
     {
